@@ -1,0 +1,23 @@
+name: Hack 2
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+jobs:
+  detect-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download Sourcee
+        uses: actions/checkout@v2
+
+      - name: Say Hello Main
+        if: ${{ github.ref == 'refs/heads/main' }}
+        run: echo "Hello, main!"
+
+      - name: Say Hello Develop
+        if: ${{ github.ref == 'refs/heads/develop' }}
+        run: echo "Hello, develop!"
